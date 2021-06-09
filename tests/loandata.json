@@ -21,6 +21,28 @@
                     "addressPostalCode": "75028"
                 }
             }
+        },
+        {
+            "borrower": {
+                "firstName": "JANE_2",
+                "lastName": "DOE_2",
+                "mailingAddress": {
+                    "addressStreetLine1": "123 EXAMPLE PKWY.",
+                    "addressCity": "FLOWER MOUND",
+                    "addressState": "TX",
+                    "addressPostalCode": "75028"
+                }
+            },
+            "coborrower": {
+                "firstName": "JOHN_2",
+                "lastName": "DOE_2",
+                "mailingAddress": {
+                    "addressStreetLine1": "123 EXAMPLE PKWY._2",
+                    "addressCity": "FLOWER MOUND_2",
+                    "addressState": "TX",
+                    "addressPostalCode": "75028"
+                }
+            }
         }
     ],
     "property": {

@@ -1,34 +1,68 @@
 {
   "reports": [
-    {
-      "title": "Residences Report",
-      "residences": [
+    [
+      [
         {
-          "street": "123 EXAMPLE PKWY.",
-          "city": "FLOWER MOUND",
-          "state": "TX",
-          "zip": "75028"
+          "title": "Borrowers Report",
+          "borrowers": [
+            {
+              "first_name": "JANE",
+              "last_name": "DOE"
+            },
+            {
+              "first_name": "JOHN",
+              "last_name": "DOE"
+            }
+          ],
+          "shared_address": true
         },
         {
-          "street": "123 EXAMPLE PKWY.",
-          "city": "FLOWER MOUND",
-          "state": "TX",
-          "zip": "75028"
+          "title": "Residences Report",
+          "residences": [
+            {
+              "street": "123 EXAMPLE PKWY.",
+              "city": "FLOWER MOUND",
+              "state": "TX",
+              "zip": "75028"
+            }
+          ]
         }
       ]
-    },
-    {
-      "title": "Borrowers Report",
-      "borrowers": [
+    ],
+    [
+      [
         {
-          "first_name": "JANE",
-          "last_name": "DOE"
+          "title": "Borrowers Report",
+          "borrowers": [
+            {
+              "first_name": "JANE_2",
+              "last_name": "DOE_2"
+            },
+            {
+              "first_name": "JOHN_2",
+              "last_name": "DOE_2"
+            }
+          ],
+          "shared_address": false
         },
         {
-          "first_name": "JOHN",
-          "last_name": "DOE"
+          "title": "Residences Report",
+          "residences": [
+            {
+              "street": "123 EXAMPLE PKWY.",
+              "city": "FLOWER MOUND",
+              "state": "TX",
+              "zip": "75028"
+            },
+            {
+              "street": "123 EXAMPLE PKWY._2",
+              "city": "FLOWER MOUND_2",
+              "state": "TX",
+              "zip": "75028"
+            }
+          ]
         }
       ]
-    }
+    ]
   ]
 }

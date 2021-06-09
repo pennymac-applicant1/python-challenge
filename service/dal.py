@@ -90,7 +90,8 @@ class Project:
 
         if len(paths) >= 2:
             paths = paths[1:]
-            paths.remove('resources')
+            # todo: windows machine - this breaks --> paths = ['\\resources', 'borrowers']
+            # paths.remove('resources')
             return paths, ext
 
         return None, None

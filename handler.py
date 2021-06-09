@@ -70,22 +70,40 @@ def main(event, context=None):  # pylint: disable=unused-argument
             )
             continue
 
-    logger.info('Service recieved loans: %s', json.dumps(loans, indent=2))
+    logger.info('Service received loans: %s', json.dumps(loans, indent=2))
 
     # Generate Manifests
     reports = []
     for loan in loans:
-        manifest = JSONManifest(loan, rules)
-        logger.info(
-            'Generated manifest: %s', json.dumps(manifest.items, indent=2)
-        )
+        applications = loan['applications']
+        for application in applications:
+            individual_loan = {'property': loan['property'], 'applications': [application]}
+            manifest = JSONManifest(individual_loan, rules)
+            logger.info(
+                'Generated manifest: %s', json.dumps(manifest.items, indent=2)
+            )
 
-        projection = JSONFactory(manifest).get_projection()
-        logger.info(
-            'Generated projection: %s', json.dumps(projection, indent=2)
-        )
+            projection = JSONFactory(manifest).get_projection()
+            logger.info(
+                'Generated projection: %s', json.dumps(projection, indent=2)
+            )
+            preliminary_report = projection.get('reports', [])
+            if len(preliminary_report) > 0:
+                for idx in range(len(preliminary_report)):
+                    entry = preliminary_report[idx]
+                    if entry['title'] == 'Residences Report':
+                        if len(entry['residences']) > 1:
+                            borrowers_idx = 1 if idx == 0 else 0
+                            addr1 = set(entry['residences'][0].items())
+                            addr2 = set(entry['residences'][1].items())
+                            if len(addr1 ^ addr2) == 0:
+                                entry['residences'].pop()
+                                preliminary_report[borrowers_idx]['shared_address'] = True
+                                break
+                            else:
+                                preliminary_report[borrowers_idx]['shared_address'] = False
 
-        reports.extend(projection.get('reports', []))
+            reports.append([preliminary_report])
 
     # Reformat report output and return
     return {'reports': reports}
